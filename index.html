@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>   
+<title>Hello</title>
+  </head>
+  <body onbeforeunload="return offliner()">
+    
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+     <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="#">Battle-Optimus.games </a> 
+   </div>
+      <form class="container-fluid justify-content-end">
+          <a href="login.html"><button class="btn btn-outline-info me-2" id="log" type="button">Log In</button></a>
+          <a href="signin.html"> <button class="btn btn-outline-info me-2" id="sign" type="button">Sign Up</button></a>
+          <button class="btn btn-outline-danger me-2" id="out">Log Out</button>
+          <button class="btn btn-outline-success me-2" id="buy" type="button">Buy Credits</button>
+          <button class="btn btn-outline-info me-2" id="profile" type="button">Profile</button>
+        </form>
+        </nav>
+
+    <h2>Play  Games and earn crypto!</h2>
+     <div class="container" id="c">
+        <div class="row">
+  <!--Poker-->  
+<div class="col">
+     
+     <div class="card" style="width: 18rem;">
+        <img src="https://media.istockphoto.com/photos/poker-chip-picture-id171383003?k=20&m=171383003&s=612x612&w=0&h=U1b6sw0w1kCuWCcR-JuUMt16NSAmn6Ia02S8St7WLgU=" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">POKER</h5>
+          <p class="card-text">play poker against a random guy and win to get credits!</p>
+          <button id="a" onclick="authA()" class="btn btn-primary">Play Poker</button>
+        </div>
+     
+      </div>
+      </div>
+
+      <!--Ludo-->
+      <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="https://img.poki.com/cdn-cgi/image/quality=78,width=600,height=600,fit=cover,g=0.5x0.5,f=auto/df93c433d1889f08a8446509d32a4253.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">LUDO</h5>
+          <p class="card-text">Play Ludo , win and get credits!</p>
+          <button id="b" onclick="authB()" class="btn btn-primary">Play Ludo</button>
+        </div>
+      </div>
+      </div>
+
+      <!--Puzzle-->
+
+      <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="https://media.istockphoto.com/vectors/pieces-puzzle-design-vector-id1082366816?k=20&m=1082366816&s=170667a&w=0&h=WusiU85Ohc9uZ_gUCJoT9EJl3VodeDkoBSBZiwSVCsY=" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Puzzle</h5>
+          <p class="card-text">Play this puzzle game win before others and get credits</p>
+          <button id="c" onclick="authC();" class="btn btn-primary">Play Puzzle</button>
+        </div>
+        </div>
+      </div>
+
+      <!--Shooting-->
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="https://media.istockphoto.com/vectors/bow-and-arrow-vector-isolated-illustration-vector-id1093596430?k=20&m=1093596430&s=612x612&w=0&h=LC2mq_5K7h5lRfq0oHBdW2KOcSXv7eVVq3wPPlR7-KE=" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Crypto Shooter</h5>
+            <p class="card-text">Play archery against another guy win and get credits</p>
+            <button id="d" class="btn btn-primary">Play Shooter</button>
+          </div>
+          </div>
+        </div>
+
+        <!--Fighting-->
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+              <img src="data:image/jpeg;base64,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" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Crypto Fighter</h5>
+                <p class="card-text">Fight against another guy and win to get credits</p>
+                <button id="e" class="btn btn-primary">Play Fighter</button>
+              </div>
+              </div>
+            </div>
+         
+      <!--End of row-->
+      </div>
+     </div>
+     <style>
+       @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+         body{
+             text-align: center;
+             font-family: 'VT323', monospace;
+             font-size: 19px;
+         }
+         .col {
+    flex: 0 0 0% !important;
+}
+
+.card-body:hover{
+    background-color: rgb(0, 216, 144);
+}
+body{
+    background-color: antiquewhite;
+}
+     </style>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDRFSxiFa5Lq86LA5GhalETIJNFfn5kmnQ",
+    authDomain: "game-web-app-b922d.firebaseapp.com",
+    projectId: "game-web-app-b922d",
+    storageBucket: "game-web-app-b922d.appspot.com",
+    messagingSenderId: "734965289853",
+    appId: "1:734965289853:web:8ab56fdefe80306b56b214",
+    measurementId: "G-QJCFXWCEK8"
+  };
+
+ firebase.initializeApp(firebaseConfig);
+//const temp2 = localStorage.getItem('temp2')
+
+function offliner(){
+return firebase.firestore().collection('credits').doc(localStorage.getItem('ID')).set({
+online: false
+  }, {merge: true})
+}
+  
+
+window.console.log("%cStop! This area is meant for developers!doing anything will hack your account", "color: red; font-size: xx-large");
+firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+ document.getElementById('log').style.display = 'none'
+ document.getElementById('sign').style.display = 'none'
+ document.getElementById('out').style.display = 'block'
+ document.getElementById('buy').style.display = 'block'
+ document.getElementById('profile').style.display = 'block'
+/////////////////////
+firebase.firestore().collection('credits').doc(localStorage.getItem('ID')).set({
+online: true
+  }, {merge: true})
+  console.log('online and logged in')
+
+} else {
+
+    document.getElementById('log').style.display = 'block'
+ document.getElementById('sign').style.display = 'block'
+ document.getElementById('out').style.display = 'none'
+ document.getElementById('buy').style.display = 'none'
+ document.getElementById('profile').style.display = 'none'
+ console.log('online and logged out')
+}
+})
+document.getElementById('buy').addEventListener('click', function(){
+  window.location = 'credits.html'
+})
+document.getElementById('out').addEventListener("click", function(){
+    firebase.auth().signOut().then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+  alert(error)
+});
+
+})
+
+
+
+function authA(){
+    firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+window.location = 'Poker/player.html'
+ 
+} else {
+  window.location = "signin.html"
+
+} 
+ }) }
+function authB(){
+    firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+ 
+ window.location = "Ludo/rn.html"
+
+} else {
+
+ window.location = "signin.html"
+} 
+ })
+}    
+function authC(){
+    firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+ 
+window.location = "Puzzle/index.html"
+} else {
+  window.location = "signin.html"
+
+} 
+ })
+
+}   
+function authD(){
+    firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+ 
+
+} else {
+
+  window.location = "signin.html"
+} 
+ })
+}   
+function authE(){
+    firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+ 
+
+} else {
+
+  window.location = "signin.html"
+} 
+ })
+}   
+
+
+document.getElementById('profile').addEventListener('click', function(){
+  window.location = "profile.html"
+})
+ </script>
+ <script src="main.js"></script>
+  </body>
+</html>
