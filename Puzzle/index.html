@@ -20,32 +20,83 @@
   <script src="blockrain.jquery.src.js"></script>
   <script src="blockrain.jquery.themes.js"></script>
   <script src="blockrain.jquery.js"></script>
-<script>
-    $('.game').blockrain();
-    const firebaseConfig = {
-    apiKey: "AIzaSyDRFSxiFa5Lq86LA5GhalETIJNFfn5kmnQ",
-    authDomain: "game-web-app-b922d.firebaseapp.com",
-    projectId: "game-web-app-b922d",
-    storageBucket: "game-web-app-b922d.appspot.com",
-    messagingSenderId: "734965289853",
-    appId: "1:734965289853:web:8ab56fdefe80306b56b214",
-    measurementId: "G-QJCFXWCEK8"
-  };
 
-  if (!firebase.apps.length) {
-   firebase.initializeApp(firebaseConfig);
-}else {
-   firebase.app(); // if already initialized, use that one
-}
-</script>
+<p >Controls</p>
+<div id="holder" class="d-flex justify-content-center">
+  <br>
+  <br>
 <button id="w" class="btn btn-info">W</button>
 <button id="a" class="btn btn-info">A</button>
 <button id="s" class="btn btn-info">S</button>
 <button id="d" class="btn btn-info">D</button>
+</div>
 <style>
   body{
   background-color: antiquewhite;
+  text-align: center;
   }
 </style>
+<br>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+  Settings
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="l1">Field Width:</p><input type="range" id="r"  min="10" max="70">
+        <p id="l2">Speed:</p><input type="range" id="rr"  min="10" max="70">
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="ss">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('.game').blockrain();
+  const firebaseConfig = {
+  apiKey: "AIzaSyDRFSxiFa5Lq86LA5GhalETIJNFfn5kmnQ",
+  authDomain: "game-web-app-b922d.firebaseapp.com",
+  projectId: "game-web-app-b922d",
+  storageBucket: "game-web-app-b922d.appspot.com",
+  messagingSenderId: "734965289853",
+  appId: "1:734965289853:web:8ab56fdefe80306b56b214",
+  measurementId: "G-QJCFXWCEK8"
+};
+
+if (!firebase.apps.length) {
+ firebase.initializeApp(firebaseConfig);
+}else {
+ firebase.app(); // if already initialized, use that one
+}
+localStorage.setItem('width', 30);
+localStorage.setItem('speed', 20);
+
+document.getElementById('ss').addEventListener('click', function(){
+var value = document.getElementById('r').value;
+var val = document.getElementById('rr').value;
+localStorage.setItem('width', value);
+localStorage.setItem('speed', val);
+
+})
+document.getElementById('r').addEventListener('input', function(){
+document.getElementById('l1').innerText = 'Field Width: '+document.getElementById('r').value;
+})
+document.getElementById('rr').addEventListener('input', function(){
+document.getElementById('l2').innerText = 'Speed: '+document.getElementById('rr').value;
+})
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
 </body>
 </html>
