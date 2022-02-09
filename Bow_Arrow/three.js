@@ -103,7 +103,7 @@ window.onload = function(){
         var h = window.innerHeight;
     
         if(h > w){
-            document.getElementById("mainContainer").style.transform = "translateX("+(w)+"px) rotate(90deg)";
+           // document.getElementById("mainContainer").style.transform = "translateX("+(w)+"px) rotate(90deg)";
             document.getElementById("mainContainer").style.width = h+"px";
             var nh = h;
             h = w;

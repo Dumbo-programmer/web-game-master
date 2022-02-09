@@ -76,9 +76,9 @@
         <div class="card" style="width: 18rem;">
           <img src="https://media.istockphoto.com/vectors/bow-and-arrow-vector-isolated-illustration-vector-id1093596430?k=20&m=1093596430&s=612x612&w=0&h=LC2mq_5K7h5lRfq0oHBdW2KOcSXv7eVVq3wPPlR7-KE=" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Crypto Shooter</h5>
-            <p class="card-text">Play archery against another guy win and get credits</p>
-            <button id="d" class="btn btn-primary">Play Shooter</button>
+            <h5 class="card-title">Archery</h5>
+            <p class="card-text">Play archery win and get credits</p>
+            <button id="d" onclick="authD();" class="btn btn-primary">Play Shooter</button>
           </div>
           </div>
         </div>
@@ -115,8 +115,16 @@ img{
 .card-body:hover{
     background-color: rgb(0, 216, 144);
 }
+.card:hover{
+    border: solid 3px #00d890;
+}
 body{
     background-color: antiquewhite;
+}
+::selection {
+  background-color: black;
+  color: white;
+  border-radius: 100px;
 }
      </style>
 <script>
@@ -216,7 +224,7 @@ window.location = "Puzzle/index.html"
 function authD(){
     firebase.auth().onAuthStateChanged((user) => {
 if (user) {
- 
+ window.location = "Bow_Arrow/index.html"
 
 } else {
 

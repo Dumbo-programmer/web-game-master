@@ -19,7 +19,7 @@
     <img id="pr" src="https://via.placeholder.com/350x150" class=" mx-auto d-block" alt="..."><button type="button" class="btn btn-link" id="editp" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">Edit</button>
 
 <br>
-<h2 class="text-start" id="usr">Name: </h2><button type="button" class="btn btn-link" id="edit" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+<h2 class="text-start" id="usr">Name: </h2><button type="button" class="btn btn-link" id="edit" data-bs-toggle="modal" data-bs-target="#exampleModal">change</button>
 <br>   
 <br>
 
@@ -100,7 +100,10 @@
     </div>
   </div>
 </div>
+
 <!--2nd modal end-->
+<h2 class="text-start" id="email">Email: </h2>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
      
@@ -254,6 +257,7 @@ profilepic: "Concept_warrior_"+i+'.png'
   }, {merge: true})
 }
 })
+document.getElementById('email').innerText = "Email: "+localStorage.getItem('ID')
 </script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
